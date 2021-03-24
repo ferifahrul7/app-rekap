@@ -1,8 +1,8 @@
 @push('css')
 	@include('datatables.datatables-css')
 @endpush
-<div class="float-right" id="buttons"></div>
-<table id="tabel-pemohon" class="table table-hover table-sm" style="width:100%">
+<div id="buttons"></div>
+<table id="tabel-pemohon" class="table table-hover table-sm table-sm-responsive" style="width:100%">
     <thead>
         <tr>
             <th>#</th>

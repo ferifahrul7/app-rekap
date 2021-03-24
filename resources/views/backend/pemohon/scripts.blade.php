@@ -30,20 +30,29 @@ var table = $('#tabel-pemohon').DataTable({
             className: 'not-exported'
         },
     ],
-
     "language": {
-        "lengthMenu": "<div class='ml-2 mt-2'> _MENU_ </div>",
-        "zeroRecords": "<button type='button' class='btn btn-danger btn-sm'> DATA TIDAK ADA !!! </button>",
+        "lengthMenu": "_MENU_ ",
+        // "info": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries",
+        
         "info": "<button type='button' class='btn btn-info btn-sm ml-2 mb-2'> Total : <span class='badge badge-transparent'> _END_</span> dari <span class='badge badge-transparent'> _TOTAL_</span> Data</button>",
-        "infoEmpty": "<button type='button' class='btn btn-danger btn-sm'> DATA TIDAK ADA !!! </button>",
-        "infoFiltered": "",
-        "search": "<div class='mr-2 mt-2'> _INPUT_ </div>",
+        "search": "Search Data :  ",
+                "dom": "<t<p >>",
+        "zeroRecords": "Tidak ada data",
+        "search": "<div class='mr-2 mt-2'> _INPUT_ </div>", "infoFiltered": "",
         "searchPlaceholder": "Cari...",
-        'paginate': {
-            'previous': '<i class="fa fa-chevron-left"></i>',
-            'next': '<i class="fa fa-chevron-right"></i>'
-        },
-    },
+        "infoEmpty": "Data tidak tersedia",
+                },
+
+    // "language": {
+    //     "lengthMenu": "<div class='ml-2 mt-2'> _MENU_ </div>",
+    //     "zeroRecords": "<button type='button' class='btn btn-danger btn-sm'> DATA TIDAK ADA !!! </button>",
+    //     "infoEmpty": "<button type='button' class='btn btn-danger btn-sm'> DATA TIDAK ADA !!! </button>",
+    //    
+    //     'paginate': {
+    //         'previous': '<i class="fa fa-chevron-left"></i>',
+    //         'next': '<i class="fa fa-chevron-right"></i>'
+    //     },
+    // },
     "bSortClasses": false,
     "pageLength": 25
 });
