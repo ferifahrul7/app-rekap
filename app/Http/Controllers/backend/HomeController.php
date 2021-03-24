@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\backend\BackendController as Controller;
+use App\Http\Controllers\Backend\BackendController as Controller;
 
 class HomeController extends Controller
 {

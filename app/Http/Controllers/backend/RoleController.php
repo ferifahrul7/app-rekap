@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use App\Http\Controllers\backend\BackendController as Controller;
+use App\Http\Controllers\Backend\BackendController as Controller;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Support\Facades\DB;
 

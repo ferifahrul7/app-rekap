@@ -23,9 +23,9 @@
     <li class="c-sidebar-nav-title">Menu</li>
 
     <li class="c-sidebar-nav-item">
-      <a class="c-sidebar-nav-link" href="#">
+      <a class="c-sidebar-nav-link" href="{{ route('pemohon.index') }}">
         <i class="c-sidebar-nav-icon fas fa-users"></i>
-        Example Menu 1
+        Data Pemohon
         <span class="badge badge-info">NEW</span>
       </a>
     </li>

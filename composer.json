@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.2",
         "spatie/laravel-permission": "^3.17",
-        "webpatser/laravel-uuid": "^3.0"
+        "webpatser/laravel-uuid": "^3.0",
+        "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
