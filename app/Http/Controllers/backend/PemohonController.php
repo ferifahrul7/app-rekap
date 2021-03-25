@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController as Controller;
+use App\Http\Requests\PemohonRequest;
+use App\Models\Pemohon as PemohonModel;
 use App\Repository\Pemohon;
 use Illuminate\Http\Request;
 use DataTables;
@@ -39,5 +41,22 @@ class PemohonController extends Controller
                 })
                 ->make(true);
         }
+    }
+
+    public function create()
+    {
+        $pemohonModel = new PemohonModel();
+        $bcrum = $this->bcrum('Create', route('pemohon.index'), 'Data Pemohon');
+        return view('backend.pemohon.create', compact('pemohonModel', 'bcrum'));
+    }
+
+    public function store(PemohonRequest $request)
+    {
+        $input = $request->all();
+        $create = PemohonModel::create($input);
+
+        $this->notif('success', 'Pemohon ' . $create->nama . ' berhasil di buat!');
+
+        return redirect()->route('pemohon.index');
     }
 }

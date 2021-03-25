@@ -1,6 +1,6 @@
 @extends('layouts.backend.master')
 @section('title')
-Create Roles
+Tambah Data Pemohon
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -10,17 +10,17 @@ Create Roles
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <h4>Create New User</h4>
+                            <h4>Tambah Data Pemohon</h4>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('users.index') }}"> Back</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('pemohon.index') }}"> Back</a>
                         </div>
                     </div>
 
 
-                    {!! Form::model($user, array('route' => 'users.store','method'=>'POST', 'id' => 'user-form')) !!}
+                    {!! Form::model($pemohonModel, array('route' => 'pemohon.store','method'=>'POST', 'id' => 'user-form')) !!}
 
-                    @include('backend.users._form')
+                    @include('backend.pemohon._form')
 
                     {!! Form::close() !!}
                 </div>
