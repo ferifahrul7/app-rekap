@@ -15,6 +15,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta name="description" content="{{ config('site.description') }}">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="author" content="{{ config('site.author') }}">
   <meta name="keyword" content="{{ config('site.keyword') }}">
   <title> @yield('title') - {{ config('app.name') }}</title>
@@ -51,7 +53,7 @@
   <!-- CoreUI and necessary plugins-->
   <!-- CoreUI -->
   <script src="{{ asset('assets/coreui/js/coreui.bundle.min.js') }}"></script>
-{{-- 
+  {{--
   <!-- Vue -->
   <script src="{{ !config('vue.isProduction') ? asset('assets/lib/vue/vue.js') : asset('assets/lib/vue/vue.min.js') }}"></script>
   <!-- Axios -->
@@ -64,6 +66,10 @@
   <!-- Plugins and scripts required by this view-->
   <!-- SweetAlert -->
   <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.min.js') }}"></script>
+  <!-- SweetAlert Config -->
+  <script src="{{ asset('assets/custom/js/sweetalert.js') }}"></script>
+  <!-- csrf config -->
+  <script src="{{ asset('assets/custom/js/csrf.js') }}"></script>
   <!-- toastr -->
   <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script>
 

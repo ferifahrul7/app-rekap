@@ -26,6 +26,7 @@ Route::group(['namespace' => 'backend', 'prefix' => 'admin'], function () {
     //pemohon
     Route::resource('pemohon','PemohonController');
     Route::get('pemohon-ajax','PemohonController@indexAjax');
+    Route::delete('ajax/pemohon/destroy','PemohonController@destroyAjax');
 
     //user
     Route::resource('users', 'UserController');

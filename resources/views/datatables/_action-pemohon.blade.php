@@ -5,7 +5,7 @@
 	{!! Form::button('<i class="fas fa-trash"></i>', [
 		'type'  => 'button',
 		'class' => 'btn btn-danger btn-sm btn-xs',
-        'id'    => 'delete-user',
+        'id'    => 'delete',
         'data-idx' => $idx,
         'data-name' => $name
 	]) !!}

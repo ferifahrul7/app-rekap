@@ -91,57 +91,50 @@
         ]
     }).container().appendTo($('#buttons'));
 
-// ---------------------------------------- event
 
- $("#saveData").click(function(event) {
-        startLoading();
-        var validat = $(".form-input").valid();
-        var action = $(this).val();
-        if (!validat) {
-            finishLoading();
-            return false;
-        }
-        event.preventDefault();
-        if (action == "add") {
-            var url = '/admin/pemohon/';
-            var title = "Tambah Pengguna";
-        } else if (action == "edit") {
-            var id = $("#id_edit").val();
-            var url = '/admin/pemohon/' + id;
-            var title = "Ubah Pengguna";
-        }
+    $(document).on('click', '#delete', function() {
+        var id = $(this).data('idx'),
+            name = $(this).data('name');
+
+        swalWithBootstrapButtons.fire({
+            title: 'Anda yakin akan menghapus data??',
+            text: "Data: " + name,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'No',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                ajaxDestroy(id);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire('Dibatalkan', 'Data pemohon terpilih batal di hapus :)', 'error')
+            }
+        })
+    })
+
+    function ajaxDestroy(idx) {
+        var url = '/admin/ajax/pemohon/destroy',
+            method = 'DELETE';
+
         $.ajax({
             url: url,
-            method: "POST",
-            data: $('.form-input').serialize(),
-            dataType: 'json',
-            error: function(json) {
-                finishLoading();
-                var errors = $.parseJSON(json.responseText);
-                $.each(errors.errors, function(key, value) {
-                    $('.' + key + '-error').html(value);
-                });
+            method: method,
+            data: {
+                idx: idx
             },
-            success: function(d) {
-                finishLoading();
-                if (d.status == 'success') {
-                    $("#formModal").modal("hide");
-                    $(".form-input")[0].reset();
-                    $(".method-hidden").html("");
-                    table.ajax.reload();
-                    notifToast(action, title, d.message);
-                    return false;
-                } else if ((d.status == 'error')) {
-                    $("#formModal").modal("hide");
-                    $(".form-input")[0].reset();
-                    $(".method-hidden").html("");
-                    table.ajax.reload();
-                    notifToast(d.status, title, d.message);
-                    return false;
+            success: function(res) {
+
+                if (res.code !== 200) {
+                    swalWithBootstrapButtons.fire('Lapor!', res.message + ' ' + res.result.total + ' registrasi', 'info');
+                } else {
+                    swalWithBootstrapButtons.fire('Lapor!', res.message + '\nnama : ' + res.result.nama, 'success');
                 }
-            }
+                $('#tabel-pemohon').DataTable().ajax.reload();
+            },
+            error: function(xhr) {}
         });
-    });
+    }
 
     function createData() {
         $(".modal-title").html("Tambah Data Pemohon");

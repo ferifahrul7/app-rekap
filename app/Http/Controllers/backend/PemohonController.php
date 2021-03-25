@@ -8,6 +8,7 @@ use App\Models\Pemohon as PemohonModel;
 use App\Repository\Pemohon;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\DB;
 
 class PemohonController extends Controller
 {
@@ -58,5 +59,55 @@ class PemohonController extends Controller
         $this->notif('success', 'Pemohon ' . $create->nama . ' berhasil di buat!');
 
         return redirect()->route('pemohon.index');
+    }
+
+    public function edit($id)
+    {
+
+        $bcrum = $this->bcrum('Edit', route('pemohon.index'), 'Data Pemohon');
+
+        $pemohonModel = PemohonModel::find($id);
+
+        return view('backend.pemohon.edit', compact('pemohonModel', 'bcrum'));
+    }
+
+    public function update(PemohonRequest $request, $id)
+    {
+        $input = $request->all();
+
+        $pemohonData = PemohonModel::find($id);
+        $pemohonData->update($input);
+
+
+        $this->notif('success', 'Pemohon ' . $pemohonData->nama . ' berhasil di ubah!');
+
+        return redirect()->route('pemohon.index');
+    }
+
+    public function destroy($id)
+    {
+        
+        $delete = PemohonModel::findOrFail($id);
+        $delete->delete();
+
+        return response()->success(200, 'User ' . $delete->name . ' berhasil dihapus');
+    }
+
+    public function destroyAjax(Request $request)
+    {
+        if ($request->ajax()) {
+            DB::beginTransaction();
+            try {
+                $input = $request->all();
+                $delete = PemohonModel::findOrFail($input['idx']);
+
+                $delete->delete();
+                DB::commit();
+                return response()->success(200, "Data Pemohon berhasil dihapus", ['nama' => $delete->nama]);
+            } catch (Exception $e) {
+                DB::rollBack();
+                return response()->success(201, "Data registrasi gagal dihapus", ['0' => $e->getMessage()]);
+            }
+        }
     }
 }
