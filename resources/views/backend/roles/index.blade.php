@@ -5,7 +5,7 @@ Roles
 @endsection
 
 @section('content')
-<div v-cloak class="container-fluid">
+<div class="container-fluid">
     <div class="fade-in">
         <div class="row">
             <div class="col-lg-12">
@@ -42,8 +42,8 @@ Roles
                         </form>
 
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div v-cloak v-if="hasError" class="alert alert-danger mb-3">@{{ errorMessage }}</div>
+                            <div class="col-lg-12"> 
+                                
                                 @include('backend.roles._table')
 
                                 {!! $roles->appends(request()->except('page'))->links() !!}
