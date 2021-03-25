@@ -19,6 +19,22 @@
                 name: 'alamat'
             },
             {
+                data: 'provinsi.nama_prov',
+                name: 'provinsi.nama_prov'
+            },
+            {
+                data: 'kabupaten.nama_kab',
+                name: 'kabupaten.nama_kab'
+            },
+            {
+                data: 'kecamatan.nama_kec',
+                name: 'kecamatan.nama_kec'
+            },
+            {
+                data: 'kelurahan.nama_kel',
+                name: 'kelurahan.nama_kel'
+            },
+            {
                 data: 'no_telepon',
                 name: 'no_telepon'
             },

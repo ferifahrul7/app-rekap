@@ -32,7 +32,7 @@
 
     <div class="form-group">
         <label for="kd_kab">Kecamatan <b class="text-danger">*</b></label>
-        {!! Form::select('kd_kab', ['' => 'kecamatan'], null, ['class' => 'form-control', 'id' => 'kd_kab']) !!}
+        {!! Form::select('kd_kab', ['' => 'kecamatan'], null, ['class' => 'form-control', 'id' => 'kd_kec']) !!}
         {!! $errors->first('kd_kab', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 
@@ -42,7 +42,7 @@
         {!! Form::select('kd_kel', ['' => 'kelurahan'], null, ['class' => 'form-control', 'id' => 'kd_kel']) !!}
         {!! $errors->first('kd_kel', '<div class="invalid-feedback">:message</div>') !!}
     </div>
-    
+
 </div>
 <div class="card-footer">
     <button class="btn btn-sm btn-primary" type="submit">

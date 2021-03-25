@@ -7,6 +7,6 @@ class Pemohon
 {
     public function getPemohon($request)
     {
-        return Model::all();
+        return Model::with('provinsi','kabupaten','kecamatan','kelurahan')->all();
     }
 }

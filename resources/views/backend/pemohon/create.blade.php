@@ -29,8 +29,11 @@ Tambah Data Pemohon
     </div>
 </div>
 @endsection
-
+@push('css')
+<link rel="stylesheet" href="{{ asset('assets/lib/select2/select2.min.css') }}">
+@endpush
 @push('scripts')
+<script src="{{ asset('assets/lib/select2/select2.min.js') }}"></script>
 <script>
     window.getKab = function getKab(kd_prov) {
         var token = $("input[name='_token']").val();
@@ -138,21 +141,57 @@ Tambah Data Pemohon
     }
 
     window.getKel = function getKel(kd_kec) {
-    var token = $("input[name='_token']").val();
-    $.ajax({
-        url: "<?php echo route('select-kelurahan') ?>",
-        method: 'POST',
-        cache: false,
-        data: {
-            kd_kec: kd_kec,
-            _token: token
-        },
-        success: function(data) {
-            setKel(data);
-        }
-    });
+        var token = $("input[name='_token']").val();
+        $.ajax({
+            url: "<?php echo route('select-kelurahan') ?>",
+            method: 'POST',
+            cache: false,
+            data: {
+                kd_kec: kd_kec,
+                _token: token
+            },
+            success: function(data) {
+                setKel(data);
+            }
+        });
     }
 
-    });
+    $('#kd_prov').select2({
+        placeholder: 'Cari Provinsi. . .'
+
+      }).on('change', function() {
+        let id_prov = $(this).select2('data')[0].id;
+        resetKab();
+        getKab(id_prov);
+        resetKec();
+        resetKel();
+      });
+
+      $('#kd_kab').select2({
+        placeholder: "Cari Kabupaten. . .",
+        language: {
+          "noResults": function() {
+            return "Mohon memilih provinsi dahulu";
+          }
+        },
+      });
+
+      $('#kd_kel').select2({
+        placeholder: "Cari Kelurahan. . .",
+        language: {
+          "noResults": function() {
+            return "Mohon memilih kecamatan dahulu";
+          }
+        },
+      });
+
+      $('#kd_kec').select2({
+        placeholder: "Cari Kecamatan. . .",
+        language: {
+          "noResults": function() {
+            return "Mohon memilih kabupaten dahulu";
+          }
+        },
+      });
 </script>
-@endsection
+@endpush
