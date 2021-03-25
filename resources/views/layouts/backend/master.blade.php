@@ -51,13 +51,16 @@
   <!-- CoreUI and necessary plugins-->
   <!-- CoreUI -->
   <script src="{{ asset('assets/coreui/js/coreui.bundle.min.js') }}"></script>
-
+{{-- 
   <!-- Vue -->
   <script src="{{ !config('vue.isProduction') ? asset('assets/lib/vue/vue.js') : asset('assets/lib/vue/vue.min.js') }}"></script>
   <!-- Axios -->
   <script src="{{ asset('assets/lib/axios/axios.min.js') }}"></script>
+  --}}
   <!-- Jquery -->
   <script src="{{ asset('assets/lib/jquery/jquery-3.5.1.min.js') }}"></script>
+  <!-- Bootstrap -->
+  <script src="{{ asset('assets/lib/bootstrap/js/bootstrap.min.js') }}"></script>
   <!-- Plugins and scripts required by this view-->
   <!-- SweetAlert -->
   <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.min.js') }}"></script>

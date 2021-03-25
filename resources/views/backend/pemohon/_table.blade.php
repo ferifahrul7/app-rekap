@@ -5,7 +5,7 @@
     <div class="text-right" id="buttons"></div>
 </div>
 <table id="tabel-pemohon" class="table table-hover table-sm table-sm-responsive" style="width:100%">
-    <thead>
+    <thead class="bg-info">
         <tr>
             <th>#</th>
             <th>NAMA PEMOHON</th>
