@@ -8,7 +8,7 @@ class Pemohon extends Model
 {
     protected $table = 'pemohon';
 
-    protected $fillable = ['nama','alamat','no_telepon'];
+    protected $fillable = ['nama','alamat','no_telepon','kd_prov','kd_kab','kd_kec','kd_kel'];
 
     
 }
