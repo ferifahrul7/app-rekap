@@ -12,21 +12,21 @@ class Pemohon extends Model
 
     public function provinsi()
     {
-        return $this->belongsTo(Provinsi::class, 'kd_prov');
+        return $this->belongsTo(Provinsi::class, 'kd_prov','kd_prov');
     }
 
     public function kabupaten()
     {
-        return $this->belongsTo(Kabupaten::class, 'kd_kab');
+        return $this->belongsTo(Kabupaten::class, 'kd_kab','kd_kab');
     }
 
     public function kecamatan()
     {
-        return $this->belongsTo(Kecamatan::class, 'kd_kec');
+        return $this->belongsTo(Kecamatan::class, 'kd_kec','kd_kec');
     }
 
     public function kelurahan()
     {
-        return $this->belongsTo(Kelurahan::class, 'kd_kel');
+        return $this->belongsTo(Kelurahan::class, 'kd_kel','kd_kel');
     }
 }
