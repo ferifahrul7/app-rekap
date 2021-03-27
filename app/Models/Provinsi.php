@@ -12,4 +12,9 @@ class Provinsi extends Model
     {
         return $this->hasMany(Kabupaten::class,'kd_prov');
     }
+
+    public function pemohons()
+    {
+        return $this->hasMany(Pemohon::class,'kd_prov');
+    }
 }

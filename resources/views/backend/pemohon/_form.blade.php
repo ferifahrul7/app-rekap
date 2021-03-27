@@ -31,9 +31,9 @@
     </div>
 
     <div class="form-group">
-        <label for="kd_kab">Kecamatan <b class="text-danger">*</b></label>
-        {!! Form::select('kd_kab', ['' => 'kecamatan'], null, ['class' => 'form-control', 'id' => 'kd_kec']) !!}
-        {!! $errors->first('kd_kab', '<div class="invalid-feedback">:message</div>') !!}
+        <label for="kd_kec">Kecamatan <b class="text-danger">*</b></label>
+        {!! Form::select('kd_kec', ['' => 'kecamatan'], null, ['class' => 'form-control', 'id' => 'kd_kec']) !!}
+        {!! $errors->first('kd_kec', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 
 

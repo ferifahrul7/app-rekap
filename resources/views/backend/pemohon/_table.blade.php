@@ -14,6 +14,7 @@
             <th>KABUPATEN</th>
             <th>KECAMATAN</th>
             <th>KELURAHAN</th>
+            <th>NO TELEPON</th>
             <th class="text-right">AKSI</th>
         </tr>
     </thead>

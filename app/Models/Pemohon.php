@@ -27,6 +27,6 @@ class Pemohon extends Model
 
     public function kelurahan()
     {
-        return $this->belongsTo(Kelurahan::clas, 'kd_kel');
+        return $this->belongsTo(Kelurahan::class, 'kd_kel');
     }
 }

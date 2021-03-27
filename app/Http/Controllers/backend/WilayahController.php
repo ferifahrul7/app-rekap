@@ -19,7 +19,7 @@ class WilayahController extends Controller
 
     public function selectKecamatan(Request $request)
     {
-        $data = Kecamatan::where('kd_kab', $request->kd_kab)->select('kd_kec as id', 'nama_kec as text')->get();
+        $data = Kecamatan::where('kd_kab', $request)->select('kd_kec as id', 'nama_kec as text')->get();
         return response()->json($data);
     }
 
