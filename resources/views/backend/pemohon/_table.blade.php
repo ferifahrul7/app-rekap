@@ -10,6 +10,10 @@
             <th>#</th>
             <th>NAMA PEMOHON</th>
             <th>ALAMAT PEMOHON</th>
+            <th>PROVINSI</th>
+            <th>KABUPATEN</th>
+            <th>KECAMATAN</th>
+            <th>KELURAHAN</th>
             <th>NO TELEPON</th>
             <th class="text-right">AKSI</th>
         </tr>

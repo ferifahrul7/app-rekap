@@ -8,6 +8,7 @@ use App\Models\Pemohon as PemohonModel;
 use App\Repository\Pemohon;
 use Illuminate\Http\Request;
 use DataTables;
+use App\Models\Provinsi;
 use Illuminate\Support\Facades\DB;
 
 class PemohonController extends Controller
@@ -48,7 +49,8 @@ class PemohonController extends Controller
     {
         $pemohonModel = new PemohonModel();
         $bcrum = $this->bcrum('Create', route('pemohon.index'), 'Data Pemohon');
-        return view('backend.pemohon.create', compact('pemohonModel', 'bcrum'));
+        $provinsi = Provinsi::pluck("nama_prov", "kd_prov")->all();
+        return view('backend.pemohon.create', compact('pemohonModel', 'bcrum','provinsi'));
     }
 
     public function store(PemohonRequest $request)
@@ -68,7 +70,9 @@ class PemohonController extends Controller
 
         $pemohonModel = PemohonModel::find($id);
 
-        return view('backend.pemohon.edit', compact('pemohonModel', 'bcrum'));
+        $provinsi = Provinsi::pluck("nama_prov", "kd_prov")->all();
+
+        return view('backend.pemohon.edit', compact('pemohonModel', 'bcrum','provinsi'));
     }
 
     public function update(PemohonRequest $request, $id)

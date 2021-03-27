@@ -24,11 +24,17 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::resource('roles', 'RoleController');
 
     //pemohon
-    Route::resource('pemohon','PemohonController');
-    Route::get('pemohon-ajax','PemohonController@indexAjax');
-    Route::delete('ajax/pemohon/destroy','PemohonController@destroyAjax');
+    Route::resource('pemohon', 'PemohonController');
+    Route::get('pemohon-ajax', 'PemohonController@indexAjax');
+    Route::delete('ajax/pemohon/destroy', 'PemohonController@destroyAjax');
 
     //user
     Route::resource('users', 'UserController');
-    Route::get('roles/check/{id}','RoleController@check')->name('roles.check');
+    Route::get('roles/check/{id}', 'RoleController@check')->name('roles.check');
+
+    //wilayah
+
+    Route::post('select-kabupaten', 'WilayahController@selectKabupaten')->name('select-kabupaten');
+    Route::post('select-kecamatan', 'WilayahController@selectKecamatan')->name('select-kecamatan');
+    Route::post('select-kelurahan', 'WilayahController@selectKelurahan')->name('select-kelurahan');
 });
