@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['namespace' => 'backend', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     //roles
