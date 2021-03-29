@@ -19,7 +19,10 @@ Ubah Data Pemohon
 
 
                     {!! Form::model($pemohonModel, ['method' => 'PATCH','route' => ['pemohon.update', $pemohonModel->id]]) !!}
-
+                    <input type="hidden" id="old_prov" value="{{ $pemohonModel->kd_prov }}">
+                    <input type="hidden" id="old_kab" value="{{ $pemohonModel->kd_kab }}">
+                    <input type="hidden" id="old_kec" value="{{ $pemohonModel->kd_kec }}">
+                    <input type="hidden" id="old_kel" value="{{ $pemohonModel->kd_kel }}">
                     @include('backend.pemohon._form')
 
                     {!! Form::close() !!}
@@ -160,39 +163,54 @@ Ubah Data Pemohon
     $('#kd_prov').select2({
         placeholder: 'Cari Provinsi. . .'
 
-      }).on('change', function() {
+    }).on('change', function() {
         let id_prov = $(this).select2('data')[0].id;
         resetKab();
         getKab(id_prov);
         resetKec();
         resetKel();
-      });
+    });
 
-      $('#kd_kab').select2({
+    $('#kd_kab').select2({
         placeholder: "Cari Kabupaten. . .",
         language: {
-          "noResults": function() {
-            return "Mohon memilih provinsi dahulu";
-          }
+            "noResults": function() {
+                return "Mohon memilih provinsi dahulu";
+            }
         },
-      });
+    });
 
-      $('#kd_kel').select2({
+    $('#kd_kel').select2({
         placeholder: "Cari Kelurahan. . .",
         language: {
-          "noResults": function() {
-            return "Mohon memilih kecamatan dahulu";
-          }
+            "noResults": function() {
+                return "Mohon memilih kecamatan dahulu";
+            }
         },
-      });
+    });
 
-      $('#kd_kec').select2({
+    $('#kd_kec').select2({
         placeholder: "Cari Kecamatan. . .",
         language: {
-          "noResults": function() {
-            return "Mohon memilih kabupaten dahulu";
-          }
+            "noResults": function() {
+                return "Mohon memilih kabupaten dahulu";
+            }
         },
-      });
+    });
+
+    $(document).ready(function() {
+        var old_prov = $('#old_prov').val(),
+            old_kab = $('#old_kab').val(),
+            old_kec = $('#old_kec').val(),
+            old_kel = $('#old_kel').val();
+
+        console.log(old_prov, old_kab, old_kec, old_kel);
+
+        $('#kd_prov').val(old_prov);
+        $('#kd_kab').val(old_kab);
+        $('#kd_kec').val(old_kec);
+        $('#kd_kel').val(old_kel);
+
+    });
 </script>
 @endpush

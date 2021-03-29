@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Backend\BackendController as Controller;
 use App\Http\Requests\PemohonRequest;
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 use App\Models\Pemohon as PemohonModel;
 use App\Repository\Pemohon;
 use Illuminate\Http\Request;
@@ -23,7 +26,7 @@ class PemohonController extends Controller
     public function index()
     {
         $bcrum = $this->bcrum('Pemohon');
-        return view('backend.pemohon.index',compact('bcrum'));
+        return view('backend.pemohon.index', compact('bcrum'));
     }
 
     public function indexAjax(Request $request)
@@ -33,8 +36,8 @@ class PemohonController extends Controller
             return DataTables::of($data)
                 ->setRowId('idx')
                 ->addIndexColumn()
-                
-                ->addColumn('action', function($data) {
+
+                ->addColumn('action', function ($data) {
                     return view('datatables._action-pemohon', [
                         'idx' => $data->id,
                         'name' => $data->nama,
@@ -50,7 +53,10 @@ class PemohonController extends Controller
         $pemohonModel = new PemohonModel();
         $bcrum = $this->bcrum('Create', route('pemohon.index'), 'Data Pemohon');
         $provinsi = Provinsi::pluck("nama_prov", "kd_prov")->all();
-        return view('backend.pemohon.create', compact('pemohonModel', 'bcrum','provinsi'));
+        $kabupaten = [];
+        $kecamatan = [];
+        $kelurahan = [];
+        return view('backend.pemohon.create', compact('pemohonModel', 'bcrum', 'provinsi','kabupaten','kecamatan','kelurahan'));
     }
 
     public function store(PemohonRequest $request)
@@ -70,9 +76,29 @@ class PemohonController extends Controller
 
         $pemohonModel = PemohonModel::find($id);
 
-        $provinsi = Provinsi::pluck("nama_prov", "kd_prov")->all();
+        $provinsi  = Provinsi::pluck("nama_prov", "kd_prov")->toArray();
 
-        return view('backend.pemohon.edit', compact('pemohonModel', 'bcrum','provinsi'));
+        $kabupaten = [];
+        $kecamatan = [];
+        $kelurahan = [];
+
+        if (!is_null($pemohonModel->kd_prov)) {
+            $kabupaten = Kabupaten::where('kd_prov', $pemohonModel->kd_prov)
+                ->pluck("nama_kab", "kd_kab")->toArray();
+        }
+
+
+        if (!is_null($pemohonModel->kd_kab)) {
+            $kecamatan = Kecamatan::where('kd_kab', $pemohonModel->kd_kab)
+                ->pluck("nama_kec", "kd_kec")->toArray();
+        }
+
+        if (!is_null($pemohonModel->kd_kec)) {
+            $kelurahan = Kelurahan::where('kd_kec', $pemohonModel->kd_kec)
+                ->pluck("nama_kel", "kd_kel")->toArray();
+        }
+
+        return view('backend.pemohon.edit', compact('pemohonModel', 'bcrum', 'provinsi', 'kabupaten', 'kelurahan', 'kecamatan'));
     }
 
     public function update(PemohonRequest $request, $id)
@@ -90,7 +116,7 @@ class PemohonController extends Controller
 
     public function destroy($id)
     {
-        
+
         $delete = PemohonModel::findOrFail($id);
         $delete->delete();
 
