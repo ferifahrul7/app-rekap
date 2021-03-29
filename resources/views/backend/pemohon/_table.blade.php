@@ -7,7 +7,7 @@
 <table id="tabel-pemohon" class="table table-hover table-sm table-sm-responsive" style="width:100%">
     <thead class="bg-info">
         <tr>
-            <th>#</th>
+            <th>NO</th>
             <th>NAMA PEMOHON</th>
             <th>ALAMAT PEMOHON</th>
             <th>PROVINSI</th>

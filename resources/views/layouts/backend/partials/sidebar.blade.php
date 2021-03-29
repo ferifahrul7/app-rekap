@@ -26,6 +26,13 @@
       <a class="c-sidebar-nav-link" href="{{ route('pemohon.index') }}">
         <i class="c-sidebar-nav-icon fas fa-users"></i>
         Data Pemohon
+      </a>
+    </li>
+
+    <li class="c-sidebar-nav-item">
+      <a class="c-sidebar-nav-link" href="{{ route('imb.index') }}">
+        <i class="c-sidebar-nav-icon fas fa-users"></i>
+        Data IMB
         <span class="badge badge-info">NEW</span>
       </a>
     </li>

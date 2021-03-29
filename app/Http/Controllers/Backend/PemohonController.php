@@ -136,7 +136,7 @@ class PemohonController extends Controller
                 return response()->success(200, "Data Pemohon berhasil dihapus", ['nama' => $delete->nama]);
             } catch (Exception $e) {
                 DB::rollBack();
-                return response()->success(201, "Data registrasi gagal dihapus", ['0' => $e->getMessage()]);
+                return response()->success(201, "Data Pemohon gagal dihapus", ['0' => $e->getMessage()]);
             }
         }
     }

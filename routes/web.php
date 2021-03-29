@@ -28,6 +28,11 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::get('pemohon-ajax', 'PemohonController@indexAjax');
     Route::delete('ajax/pemohon/destroy', 'PemohonController@destroyAjax');
 
+    //imb
+    Route::resource('imb','IMBController');
+    Route::get('imb-ajax','IMBController@indexAjax');
+    Route::delete('ajax/imb/destroy','IMBController@destroyAjax');
+
     //user
     Route::resource('users', 'UserController');
     Route::get('roles/check/{id}', 'RoleController@check')->name('roles.check');
