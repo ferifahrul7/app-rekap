@@ -159,44 +159,54 @@ Ubah Data Pemohon
             }
         });
     }
+    $(document).ready(function() {
 
-    $('#kd_prov').select2({
-        placeholder: 'Cari Provinsi. . .'
+        $('#kd_prov').select2({
+            placeholder: 'Cari Provinsi. . .'
 
-    }).on('change', function() {
-        let id_prov = $(this).select2('data')[0].id;
-        resetKab();
-        getKab(id_prov);
-        resetKec();
-        resetKel();
-    });
+        }).on('change', function() {
+            let id_prov = $(this).select2('data')[0].id;
+            resetKab();
+            getKab(id_prov);
+            resetKec();
+            resetKel();
+        });
 
-    $('#kd_kab').select2({
-        placeholder: "Cari Kabupaten. . .",
-        language: {
-            "noResults": function() {
-                return "Mohon memilih provinsi dahulu";
-            }
-        },
-    });
+        $('#kd_kab').select2({
+            placeholder: "Cari Kabupaten. . .",
+            language: {
+                "noResults": function() {
+                    return "Mohon memilih provinsi dahulu";
+                }
+            },
+        }).on('change',function(){
+            resetKec();
+            getKec($(this).select2('data')[0].id);
+            resetKel();
+        })
 
-    $('#kd_kel').select2({
-        placeholder: "Cari Kelurahan. . .",
-        language: {
-            "noResults": function() {
-                return "Mohon memilih kecamatan dahulu";
-            }
-        },
-    });
+        $('#kd_kel').select2({
+            placeholder: "Cari Kelurahan. . .",
+            language: {
+                "noResults": function() {
+                    return "Mohon memilih kecamatan dahulu";
+                }
+            },
+        });
 
-    $('#kd_kec').select2({
-        placeholder: "Cari Kecamatan. . .",
-        language: {
-            "noResults": function() {
-                return "Mohon memilih kabupaten dahulu";
-            }
-        },
-    });
+        $('#kd_kec').select2({
+            placeholder: "Cari Kecamatan. . .",
+            language: {
+                "noResults": function() {
+                    return "Mohon memilih kabupaten dahulu";
+                }
+            },
+        }).on('change',function(){
+            resetKel();
+            getKel($(this).select2('data')[0].id);
+        })
+
+    })
 
     $(document).ready(function() {
         var old_prov = $('#old_prov').val(),
